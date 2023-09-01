@@ -14,10 +14,10 @@
     </section>
     <section class="app--content-total py-3 flex justify-between mx-1">
       <span class="font-bold">All Book (0)</span>
-      <a class="py-1 px-3 bg-sky-500 rounded hover:text-white hover:cursor-pointer">Add Book</a>
+      <a class="py-1 px-3 bg-sky-500 rounded hover:text-white hover:cursor-pointer" id="open">Add Book</a>
     </section>
     <section class="app--content-data h-5/6">
-        <ul class="books grid gap-3 grid-cols-3 grid-flow-row auto-rows-300">
+        <ul class="books grid gap-x-2 gap-y-5 grid-cols-3 grid-flow-row auto-rows-300">
           <li class="relative">
             <img src="https://source.unsplash.com/random/?book">
             <span class="book--title absolute bottom-3 left-3 bg-sky-500 w-20 rounded text-center text-sm">Narnia of 4 adventures</span>
@@ -58,6 +58,50 @@
     </section>
   </main>
 
+   <!-- Overlay element -->
+   <div id="overlay" class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
+
+   <!-- The dialog -->
+   <div id="dialog"
+       class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 bg-white rounded-md px-8 py-6 space-y-5 drop-shadow-lg">
+       <h1 class="text-2xl font-semibold">Add Book</h1>
+       <div class="py-5 border-t border-b border-gray-300">
+          <form action="">
+            <input class="border-2 py-2 px-3 my-2 rounded" type="text" name="title" placeholder="Title: e.g Narnia">
+            <input class="border-2 py-2 px-3 my-2 rounded" type="text" name="author" placeholder="Author: e.g Thomas M">
+            <input class="border-2 py-2 px-3 my-2 rounded" type="number" name="pages" placeholder="Pages: e.g 12">
+            <div class="readCheck flex my-1">
+              <label for="read">Are you complete read this book?</label>
+              <input type="checkbox" name="isRead" id="read">
+            </div>
+          </form>
+       </div>
+       <div class="flex justify-end">
+           <!-- This button is used to close the dialog -->
+           <button id="close" class="px-5 py-2 bg-indigo-500 hover:bg-indigo-700 text-white cursor-pointer rounded-md">
+               Close</button>
+       </div>
+   </div>
+
+
 <script src="tailwind-custom.js"></script>
+<script>
+  var openButton = document.getElementById('open');
+  var dialog = document.getElementById('dialog');
+  var closeButton = document.getElementById('close');
+  var overlay = document.getElementById('overlay');
+
+  // show the overlay and the dialog
+  openButton.addEventListener('click', function () {
+      dialog.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+  });
+
+  // hide the overlay and the dialog
+  closeButton.addEventListener('click', function () {
+      dialog.classList.add('hidden');
+      overlay.classList.add('hidden');
+  });
+</script>
 </body>
 </html>
