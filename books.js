@@ -62,11 +62,11 @@ submitButton.addEventListener('click', function(e){
 
 document.addEventListener('click', (e) => {
     if(e.target.classList.contains('readChange')){
-        e.target.classList.toggle('bg-red-100');
-        e.target.classList.toggle('hover:bg-red-400');
-        const parentId = parseInt(e.target.parentNode.parentNode.parentNode.id);
+        const target = e.target;
+        toggleRead(target);
+        const parentId = parseInt(target.parentNode.parentNode.parentNode.id);
         switchRead(parentId);
-        (e.target.textContent == 'Not Read') ? e.target.textContent = 'Read' : e.target.textContent = 'Not Read';
+        (target.textContent == 'Not Read') ? target.textContent = 'Read' : target.textContent = 'Not Read';
     }
     if(e.target.classList.contains('removeCard')){
         confirm('Are you sure remove this book?');
@@ -74,6 +74,16 @@ document.addEventListener('click', (e) => {
         removeBookfromLibrary(parentId);
     }
 })
+
+function toggleRead(target){
+    if(target.textContent == 'Not Read'){
+        target.classList.remove('bg-red-400');
+        target.classList.add('bg-green-400');
+    } else {
+        target.classList.add('bg-red-400');
+        target.classList.remove('bg-green-400');
+    }
+}
 
 function switchRead(parentId){
     myLibrary[parentId].isCompleted = !myLibrary[parentId].isCompleted;
@@ -102,7 +112,7 @@ function changeUI(myLibrary){
                         <span class="block text-sm my-3">${myLibrary[i].author} (Author)</span>
                         <p class="font-bold mb-4">${myLibrary[i].pages} Pages</p>
                         <div class="card--cta">
-                            ${myLibrary[i].isCompleted ? '<a class="block readChange bg-green-100 bg-red-100 rounded my-2 py-2 cursor-pointer hover:bg-green-400 hover:bg-red-400">Read</a>' : '<a class="block readChange bg-red-100 bg-green-100 rounded my-2 py-2 cursor-pointer hover:bg-red-400 hover:bg-green-400">Not Read</a>'}    
+                            ${myLibrary[i].isCompleted ? '<a class="block readChange bg-green-400 rounded my-2 py-2 cursor-pointer">Read</a>' : '<a class="block readChange bg-red-400 rounded my-2 py-2 cursor-pointer">Not Read</a>'}    
                             <a class="block removeCard bg-red-500 text-white rounded my-2 py-2 cursor-pointer">Remove</a>
                         </div>
                         </div>
