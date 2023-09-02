@@ -100,7 +100,7 @@ function changeUI(myLibrary){
                         <div class="card px-4 py-5 shadow-lg border-2 rounded text-center">
                         <h1 class="font-bold text-xl">${myLibrary[i].title}</h1>
                         <span class="block text-sm my-3">${myLibrary[i].author} (Author)</span>
-                        <p class="font-bold mb-4"${myLibrary[i].pages} Pages</p>
+                        <p class="font-bold mb-4">${myLibrary[i].pages} Pages</p>
                         <div class="card--cta">
                             ${myLibrary[i].isCompleted ? '<a class="block readChange bg-green-100 bg-red-100 rounded my-2 py-2 cursor-pointer hover:bg-green-400 hover:bg-red-400">Read</a>' : '<a class="block readChange bg-red-100 bg-green-100 rounded my-2 py-2 cursor-pointer hover:bg-red-400 hover:bg-green-400">Not Read</a>'}    
                             <a class="block removeCard bg-red-500 text-white rounded my-2 py-2 cursor-pointer">Remove</a>
