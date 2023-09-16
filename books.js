@@ -27,11 +27,13 @@ function closeModal(){
 // ==  Library Script == //
 changeUI(myLibrary);
 
-function Book(title, author, pages, isCompleted) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isCompleted = isCompleted;
+class Book {
+    constructor(title, author, pages, isCompleted){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isCompleted = isCompleted;
+    }
 }
 
 function addBook(book, elem, bookInput){
